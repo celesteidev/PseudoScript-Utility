@@ -14,7 +14,7 @@ jobs:
     
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         fetch-depth: 0
 
@@ -30,7 +30,7 @@ jobs:
         ./build-deb.sh
 
     - name: Upload Debian package artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: psu-debian-package
         path: packages/psu_*.deb
