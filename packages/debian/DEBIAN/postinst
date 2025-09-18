@@ -1,0 +1,11 @@
+#!/bin/bash
+# Post-installation script for PseudoScript Utility
+
+echo "PseudoScript Utility (psu) has been successfully installed!"
+echo ""
+echo "Quick start:"
+echo "  psu run example.psu     # Execute a script"
+echo "  psu compile file.psu    # Compile to HTML"
+echo ""
+echo "Documentation: /usr/share/doc/psu/README"
+echo "Examples: /usr/share/psu/examples/"

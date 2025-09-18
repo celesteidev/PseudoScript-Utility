@@ -1,0 +1,15 @@
+PseudoScript Utility (psu) - Version 0.1.0
+===========================================
+
+A modern scripting language for web content generation.
+
+USAGE:
+  psu run <file.psu>        # Execute a script
+  psu compile <file.psu>    # Compile to HTML
+
+EXAMPLES:
+  See /usr/share/psu/examples/
+
+DOCUMENTATION:
+  Full documentation available at:
+  https://github.com/celesteidev/PseudoScript-Utility

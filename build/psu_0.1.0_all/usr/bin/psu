@@ -1,0 +1,56 @@
+#!/usr/bin/env python3
+import sys
+import os
+
+# Add the installed interpreter path
+sys.path.insert(0, '/usr/lib/psu/interpreter')
+
+try:
+    from main import execute_psu_script
+except ImportError as e:
+    print(f"Error: Could not import PSU interpreter: {e}")
+    print("Make sure PseudoScript Utility is properly installed.")
+    sys.exit(1)
+
+def main():
+    if len(sys.argv) < 2:
+        print("PseudoScript Utility (psu) - Version 0.1.0")
+        print("Usage: psu <command> [options]")
+        print("\nCommands:")
+        print("  run <file.psu>    Execute a PseudoScript file")
+        print("  compile <file.psu> [output.html]  Compile to HTML")
+        print("  help              Show this help message")
+        sys.exit(1)
+    
+    command = sys.argv[1]
+    
+    if command == 'run':
+        if len(sys.argv) < 3:
+            print("Error: Please specify a .psu file to run")
+            sys.exit(1)
+        psu_file = sys.argv[2]
+        execute_psu_script(psu_file)
+        
+    elif command == 'compile':
+        if len(sys.argv) < 3:
+            print("Error: Please specify a .psu file to compile")
+            sys.exit(1)
+        psu_file = sys.argv[2]
+        output_file = sys.argv[3] if len(sys.argv) > 3 else 'index.html'
+        execute_psu_script(psu_file)
+        print(f"Compiled {psu_file} to {output_file}")
+        
+    elif command == 'help':
+        print("PseudoScript Utility - A modern scripting language for web generation")
+        print("\nExamples:")
+        print("  psu run example.psu      # Execute a script")
+        print("  psu compile app.psu      # Compile to HTML")
+        print("  psu compile app.psu mypage.html  # Compile to specific file")
+        
+    else:
+        print(f"Unknown command: {command}")
+        print("Use 'psu help' for usage information")
+        sys.exit(1)
+
+if __name__ == "__main__":
+    main()

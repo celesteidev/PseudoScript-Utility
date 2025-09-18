@@ -1,0 +1,12 @@
+Package: psutil
+Version: 0.1.0
+Section: devel
+Priority: optional
+Architecture: all
+Depends: python3
+Maintainer: Celestei DEV (administrator@celestei.com)
+Description: PseudoScript Utility - A modern web scripting language
+ PseudoScript Utility (psu) is an innovative scripting language designed
+ for web content generation. It features a clean, readable syntax and
+ compiles to standard HTML for easy web deployment.
+Homepage: https://github.com/celesteidev/PseudoScript-Utility

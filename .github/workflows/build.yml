@@ -1,0 +1,42 @@
+name: Build Debian Package
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  release:
+    types: [created]
+
+jobs:
+  build-deb:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Build Debian package
+      run: |
+        cd packages
+        chmod +x build-deb.sh
+        ./build-deb.sh
+
+    - name: Upload Debian package artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: psu-debian-package
+        path: packages/psu_*.deb
+
+    - name: Create GitHub Release (on tag)
+      if: startsWith(github.ref, 'refs/tags/')
+      uses: softprops/action-gh-release@v1
+      with:
+        files: packages/psu_*.deb
